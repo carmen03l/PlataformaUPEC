@@ -1,20 +1,19 @@
-// login.js
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
 
-  form.addEventListener("submit", function(e) {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    // Simulación básica (más adelante se puede conectar con base de datos)
+    // Simulación de acceso
     if (email === "admin@upec.edu.ec" && password === "12345") {
-      alert("Bienvenido Administrador");
+      alert("Bienvenido, administrador 👨‍💼");
       window.location.href = "dashboard/admin.html";
     } 
     else if (email === "usuario@upec.edu.ec" && password === "12345") {
-      alert("Bienvenido Usuario");
+      alert("Bienvenido, usuario 👤");
       window.location.href = "dashboard/usuario.html";
     } 
     else {

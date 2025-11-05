@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión - Plataforma UPEC</title>
-  <link rel="stylesheet" href="login.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión | Plataforma UPEC</title>
+  <link rel="stylesheet" href="css/login.css" />
 </head>
 <body>
-  <div class="login-container">
-    <!-- Panel Izquierdo -->
-    <div class="login-box">
-      <div class="logo">
-        <img src="img/logo_upec.png" alt="Logo UPEC">
-        <h2>Plataforma UPEC</h2>
-      </div>
+  <div class="container">
+    <div class="image-side"></div>
 
-      <h3>Iniciar Sesión</h3>
-      <form id="loginForm">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required placeholder="usuario@upec.edu.ec">
+    <!-- SECCIÓN LOGIN -->
+    <div class="login-side" id="loginSection">
+      <div class="login-box">
+        <div class="profile-circle">👤</div>
+        <h2>Iniciar Sesión</h2>
+        <input type="email" placeholder="Correo electrónico" required />
+        <input type="password" placeholder="Contraseña" required />
+        <button id="loginBtn">Entrar</button>
 
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" required placeholder="********">
-
-        <div class="options">
-          <label><input type="checkbox" id="remember"> Recordarme</label>
-          <a href="#">¿Olvidaste tu contraseña?</a>
+        <div class="links">
+          <a href="#">¿Olvidaste tu contraseña?</a><br>
+          <a href="#" id="open-register">¿Eres nuevo? Regístrate</a>
         </div>
-
-        <button type="submit" class="btn-login">Ingresar</button>
-
-        <p class="register-text">
-          ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
-        </p>
-      </form>
+      </div>
     </div>
 
-    <!-- Panel Derecho -->
-    <div class="info-box">
-      <div class="info-content">
-        <h2>Bienvenido a la Plataforma UPEC</h2>
-        <p>Explora, aprende y conecta con nuestra comunidad educativa.  
-        Administra tus cursos, tareas y reportes de forma inteligente.</p>
-        <a href="#" class="btn-info">Más información</a>
+    <!-- SECCIÓN REGISTRO -->
+    <div class="register-side" id="registerSection" style="display: none;">
+      <div class="register-box">
+        <h2>🎓 Gracias por querer formar parte de este foro</h2>
+        <p>Completa tu registro para unirte al foro académico de la UPEC</p>
+
+        <input type="text" id="nombre" placeholder="Nombre y Apellido" required />
+        <input type="email" id="correo" placeholder="Correo electrónico" required />
+        <input type="password" id="password" placeholder="Contraseña" required />
+        <input type="text" id="pais" placeholder="País" />
+        <input type="tel" id="telefono" placeholder="Número de teléfono" />
+
+        <button id="registerBtn">Registrarme</button>
+
+        <div class="links">
+          <a href="#" id="backToLogin">← Volver al inicio de sesión</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <script src="login.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>

@@ -3,44 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plataforma Híbrida UPEC</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/main.js" defer></script>
+  <title>Iniciar Sesión - Plataforma UPEC</title>
+  <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-  <header>
-    <h1>🌐 Plataforma Híbrida UPEC</h1>
-    <nav class="menu">
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown">
-          <a href="#">Menú ▼</a>
-          <ul class="submenu">
-            <li><a href="pages/historia.html">Historia UPEC</a></li>
-            <li><a href="pages/foro.html">Foro Computación</a></li>
-            <li><a href="pages/contacto.html">Contacto</a></li>
-            <li><a href="pages/calificar.html">Califica la página</a></li>
-          </ul>
-        </li>
-        <li><a href="login.html">Iniciar Sesión</a></li>
-      </ul>
-    </nav>
 
-    <div id="perfilUsuario" class="perfil-oculto">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Perfil">
-      <div class="submenu-perfil">
-        <p id="nombreUsuario"></p>
-        <a href="dashboard/usuario.html">Bandeja de Entrada</a>
-        <a href="#">Notificaciones</a>
-        <a href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+  <div class="login-container">
+    <!-- SECCIÓN IZQUIERDA -->
+    <div class="left-section">
+      <img src="img/fondo-upec.jpg" alt="UPEC Campus">
+      <div class="overlay-text">
+        <h1>Bienvenido a la Plataforma UPEC</h1>
+        <p>Explora la historia, comparte en el foro y conecta con la comunidad universitaria.</p>
       </div>
     </div>
-  </header>
 
-  <section class="inicio">
-    <h2>Bienvenido a la Plataforma UPEC</h2>
-    <p>Explora la historia de nuestra universidad, participa en el foro de computación y califica la experiencia.</p>
-    <button onclick="window.location.href='login.html'">Comienza Ahora</button>
-  </section>
+    <!-- SECCIÓN DERECHA -->
+    <div class="right-section">
+      <div class="login-box">
+        <!-- Círculo de imagen -->
+        <div class="user-circle">
+          <img src="img/default-user.png" alt="Usuario">
+        </div>
+
+        <h2>Inicia Sesión</h2>
+
+        <form id="loginForm">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="usuario@upec.edu.ec" required>
+
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="********" required>
+
+          <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+
+          <button type="submit" class="btn-login">Ingresar</button>
+
+          <p class="new-user">¿Eres nuevo? <a href="register.html">Regístrate aquí</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
 </body>
 </html>
