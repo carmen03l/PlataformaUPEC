@@ -1,31 +1,24 @@
-function register() {
-  const users = JSON.parse(localStorage.getItem('usuarios')) || [];
-  const newUser = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    password: document.getElementById('password').value,
-    role: document.getElementById('email').value.includes('@admin.upec.edu.ec') ? 'admin' : 'usuario'
-  };
-  users.push(newUser);
-  localStorage.setItem('usuarios', JSON.stringify(users));
-  alert('Registro exitoso');
-  window.location.href = 'login.html';
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
+  if (!form) return;
 
-function login() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const users = JSON.parse(localStorage.getItem('usuarios')) || [];
-  const user = users.find(u => u.email === email && u.password === password);
-  
-  if (user) {
-    localStorage.setItem('usuarioActivo', JSON.stringify(user));
-    if (user.role === 'admin') {
-      window.location.href = 'dashboard/admin.html';
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const usuario = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
+
+    if (usuario && pass) {
+      localStorage.setItem("usuario", usuario);
+      localStorage.setItem("role", role);
+
+      if (role === "admin") {
+        window.location.href = "dashboard/admin.html";
+      } else {
+        window.location.href = "dashboard/usuario.html";
+      }
     } else {
-      window.location.href = 'dashboard/usuario.html';
+      alert("Por favor completa todos los campos");
     }
-  } else {
-    alert('Credenciales incorrectas');
-  }
-}
+  });
+});

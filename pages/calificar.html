@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Califica la página</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .stars input { display: none; }
+    .stars label {
+      font-size: 30px;
+      color: gray;
+      cursor: pointer;
+    }
+    .stars input:checked ~ label {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <nav class="menu">
+    <div class="logo">UPEC</div>
+    <ul class="menu-items">
+      <li><a href="historia.html">Historia UPEC</a></li>
+      <li><a href="foro.html">Foro Computación</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="calificar.html" class="active">Califica la página</a></li>
+    </ul>
+  </nav>
+
+  <section class="content">
+    <h1>Califica nuestra plataforma</h1>
+    <div class="stars">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+    </div>
+    <p id="mensaje"></p>
+  </section>
+
+  <script>
+    document.querySelectorAll('input[name="rating"]').forEach(r => {
+      r.addEventListener('change', e => {
+        document.getElementById('mensaje').textContent = `¡Gracias! Has calificado con ${e.target.value} estrellas ⭐`;
+      });
+    });
+  </script>
+</body>
+</html>

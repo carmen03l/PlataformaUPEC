@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de Usuario</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="menu">
+    <div class="logo">UPEC</div>
+    <ul class="menu-items">
+      <li><a href="../pages/historia.html">Historia UPEC</a></li>
+      <li><a href="../pages/foro.html">Foro Computación</a></li>
+      <li><a href="../pages/contacto.html">Contacto</a></li>
+      <li><a href="../pages/calificar.html">Califica la página</a></li>
+    </ul>
+    <div class="user-circle" onclick="toggleMenu()">
+      <img src="../img/user.png" alt="Usuario">
+      <div class="dropdown" id="userDropdown">
+        <a href="#">Bandeja de entrada</a>
+        <a href="#">Notificaciones</a>
+        <a href="#" onclick="logout()">Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="content">
+    <h1>Bienvenido <span id="nombreUsuario"></span></h1>
+    <p>Explora el foro académico o conoce más sobre la UPEC.</p>
+  </section>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

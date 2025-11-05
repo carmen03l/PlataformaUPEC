@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foro de Computación</title>
+  <link rel="stylesheet" href="../css/foro.css">
+  <script src="../js/foro.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>💻 Foro de Computación UPEC</h1>
+  </header>
+
+  <div id="foro">
+    <div id="mensajes"></div>
+
+    <div id="areaComentario" class="oculto">
+      <textarea id="comentario" placeholder="Escribe tu aporte..."></textarea><br>
+      <button onclick="publicar()">Publicar</button>
+    </div>
+
+    <p id="mensajeAcceso">Debes iniciar sesión para publicar o calificar.</p>
+  </div>
+</body>
+</html>
