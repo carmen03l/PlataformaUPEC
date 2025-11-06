@@ -4,49 +4,117 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iniciar Sesión | Plataforma UPEC</title>
-  <link rel="stylesheet" href="css/login.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      height: 100vh;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+    }
+
+    .left {
+      flex: 1;
+      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+      position: relative;
+    }
+
+    .left::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .left-text {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      color: #fff;
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-box {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 350px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2196f3;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #1976d2;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <div class="image-side"></div>
-
-    <!-- SECCIÓN LOGIN -->
-    <div class="login-side" id="loginSection">
-      <div class="login-box">
-        <div class="profile-circle">👤</div>
-        <h2>Iniciar Sesión</h2>
-        <input type="email" placeholder="Correo electrónico" required />
-        <input type="password" placeholder="Contraseña" required />
-        <button id="loginBtn">Entrar</button>
-
-        <div class="links">
-          <a href="#">¿Olvidaste tu contraseña?</a><br>
-          <a href="#" id="open-register">¿Eres nuevo? Regístrate</a>
-        </div>
+    <div class="left">
+      <div class="left-text">
+        <h1>Plataforma UPEC</h1>
+        <p>Conecta, aprende y comparte con la comunidad académica.</p>
       </div>
     </div>
-
-    <!-- SECCIÓN REGISTRO -->
-    <div class="register-side" id="registerSection" style="display: none;">
-      <div class="register-box">
-        <h2>🎓 Gracias por querer formar parte de este foro</h2>
-        <p>Completa tu registro para unirte al foro académico de la UPEC</p>
-
-        <input type="text" id="nombre" placeholder="Nombre y Apellido" required />
-        <input type="email" id="correo" placeholder="Correo electrónico" required />
-        <input type="password" id="password" placeholder="Contraseña" required />
-        <input type="text" id="pais" placeholder="País" />
-        <input type="tel" id="telefono" placeholder="Número de teléfono" />
-
-        <button id="registerBtn">Registrarme</button>
-
-        <div class="links">
-          <a href="#" id="backToLogin">← Volver al inicio de sesión</a>
-        </div>
+    <div class="right">
+      <div class="login-box">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm">
+          <input type="text" id="usuario" placeholder="Usuario o correo" required />
+          <input type="password" id="clave" placeholder="Contraseña" required />
+          <button type="submit" id="loginBtn">Entrar</button>
+        </form>
       </div>
     </div>
   </div>
 
-  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const usuario = document.getElementById("usuario").value.trim();
+      const clave = document.getElementById("clave").value.trim();
+
+      if (usuario && clave) {
+        localStorage.setItem("usuarioUPEC", usuario);
+        alert("✅ Sesión iniciada correctamente");
+        window.location.href = "inicio.html";
+      } else {
+        alert("⚠️ Ingresa tu usuario y contraseña");
+      }
+    });
+  </script>
 </body>
 </html>

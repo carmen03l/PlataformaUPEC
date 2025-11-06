@@ -1,23 +1,33 @@
+// Esperar a que el contenido del DOM esté cargado
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("loginForm");
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  const loginBtn = document.getElementById("loginBtn");
+
+  // Si no existe el botón (por ejemplo si el script carga en otra página), salimos
+  if (!loginBtn) return;
+
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // Evita que el formulario se recargue
 
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    // Simulación de acceso
-    if (email === "admin@upec.edu.ec" && password === "12345") {
-      alert("Bienvenido, administrador 👨‍💼");
-      window.location.href = "dashboard/admin.html";
-    } 
-    else if (email === "usuario@upec.edu.ec" && password === "12345") {
-      alert("Bienvenido, usuario 👤");
-      window.location.href = "dashboard/usuario.html";
-    } 
-    else {
-      alert("Credenciales incorrectas. Intenta de nuevo.");
+    // Validación simple
+    if (email === "" || password === "") {
+      alert("⚠️ Por favor, completa todos los campos.");
+      return;
     }
+
+    // Tomar el nombre del correo antes del @ (ej: usuario@upec.edu.ec → usuario)
+    const nombre = email.split("@")[0];
+
+    // Guardar nombre de usuario en localStorage para mostrarlo en la página de inicio
+    localStorage.setItem("usuarioUPEC", nombre);
+
+    // Simular inicio de sesión exitoso
+    alert("✅ Sesión iniciada correctamente.");
+
+    // Redirigir al inicio
+    window.location.href = "inicio.html";
   });
 });
