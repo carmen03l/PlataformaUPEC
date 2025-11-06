@@ -6,12 +6,14 @@ const backBtn = document.getElementById('backToLogin');
 const registerBtn = document.getElementById('registerBtn');
 const loginBtn = document.getElementById('loginBtn');
 
+// --- ABRIR REGISTRO ---
 openBtn.addEventListener('click', (e) => {
   e.preventDefault();
   loginSection.style.display = 'none';
   registerSection.style.display = 'flex';
 });
 
+// --- VOLVER AL LOGIN ---
 backBtn.addEventListener('click', (e) => {
   e.preventDefault();
   registerSection.style.display = 'none';
@@ -33,7 +35,22 @@ registerBtn.addEventListener('click', () => {
   }
 });
 
-// --- BOTÓN INICIAR SESIÓN (simulado) ---
+// --- BOTÓN INICIAR SESIÓN ---
 loginBtn.addEventListener('click', () => {
-  alert('✅ Sesión iniciada correctamente.');
+  const emailInput = document.querySelector('input[type="email"]');
+  const passwordInput = document.querySelector('input[type="password"]');
+
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  // En esta simulación se permite acceso sin validar usuario real
+  if (email !== "" && password !== "") {
+    alert("✅ Sesión iniciada correctamente.");
+    // Guarda el usuario en localStorage para mantener sesión
+    localStorage.setItem("usuarioUPEC", email);
+    // Redirige al inicio
+    window.location.href = "inicio.html";
+  } else {
+    alert("Por favor ingresa tu correo y contraseña.");
+  }
 });

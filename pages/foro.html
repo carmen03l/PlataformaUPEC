@@ -2,25 +2,118 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foro de Computación</title>
+  <title>Foro Académico | UPEC</title>
   <link rel="stylesheet" href="../css/foro.css">
-  <script src="../js/foro.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>💻 Foro de Computación UPEC</h1>
+    <h1>💻 Foro Académico de Computación - UPEC</h1>
+    <button id="volverBtn">⬅ Volver al inicio</button>
   </header>
 
-  <div id="foro">
-    <div id="mensajes"></div>
-
-    <div id="areaComentario" class="oculto">
-      <textarea id="comentario" placeholder="Escribe tu aporte..."></textarea><br>
-      <button onclick="publicar()">Publicar</button>
+  <main>
+    <div class="nuevo-comentario">
+      <h2>Publicar nuevo tema o comentario</h2>
+      <textarea id="comentarioTexto" placeholder="Escribe tu comentario o pregunta sobre la carrera de Computación..."></textarea>
+      <button id="publicarBtn">Publicar</button>
     </div>
 
-    <p id="mensajeAcceso">Debes iniciar sesión para publicar o calificar.</p>
-  </div>
+    <div class="foro-lista">
+      <h2>Comentarios Recientes</h2>
+      <div id="comentariosContainer"></div>
+    </div>
+  </main>
+
+  <script>
+    const usuarioActivo = localStorage.getItem("usuarioActivo");
+    const comentariosContainer = document.getElementById("comentariosContainer");
+    const publicarBtn = document.getElementById("publicarBtn");
+    const comentarioTexto = document.getElementById("comentarioTexto");
+    const volverBtn = document.getElementById("volverBtn");
+
+    volverBtn.addEventListener("click", () => {
+      window.location.href = "../inicio.html";
+    });
+
+    // Cargar comentarios guardados
+    let comentarios = JSON.parse(localStorage.getItem("foroComentarios")) || [];
+
+    function mostrarComentarios() {
+      comentariosContainer.innerHTML = "";
+
+      if (comentarios.length === 0) {
+        comentariosContainer.innerHTML = "<p>No hay comentarios aún. ¡Sé el primero en participar!</p>";
+        return;
+      }
+
+      comentarios.forEach((comentario, index) => {
+        const div = document.createElement("div");
+        div.classList.add("comentario");
+
+        div.innerHTML = `
+          <div class="info-usuario">
+            <strong>${comentario.usuario}</strong> <span>${comentario.fecha}</span>
+          </div>
+          <p>${comentario.texto}</p>
+          <div class="acciones">
+            <button class="likeBtn" data-index="${index}">👍 ${comentario.likes}</button>
+            <button class="deleteBtn" data-index="${index}">🗑 Eliminar</button>
+          </div>
+        `;
+
+        comentariosContainer.appendChild(div);
+      });
+
+      document.querySelectorAll(".likeBtn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const i = e.target.getAttribute("data-index");
+          comentarios[i].likes++;
+          localStorage.setItem("foroComentarios", JSON.stringify(comentarios));
+          mostrarComentarios();
+        });
+      });
+
+      document.querySelectorAll(".deleteBtn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const i = e.target.getAttribute("data-index");
+          if (comentarios[i].usuario === usuarioActivo) {
+            comentarios.splice(i, 1);
+            localStorage.setItem("foroComentarios", JSON.stringify(comentarios));
+            mostrarComentarios();
+          } else {
+            alert("Solo puedes eliminar tus propios comentarios.");
+          }
+        });
+      });
+    }
+
+    mostrarComentarios();
+
+    publicarBtn.addEventListener("click", () => {
+      if (!usuarioActivo) {
+        alert("⚠️ Debes iniciar sesión para comentar.");
+        return;
+      }
+
+      const texto = comentarioTexto.value.trim();
+      if (texto === "") {
+        alert("Por favor escribe algo antes de publicar.");
+        return;
+      }
+
+      const nuevoComentario = {
+        usuario: usuarioActivo,
+        texto,
+        fecha: new Date().toLocaleString(),
+        likes: 0
+      };
+
+      comentarios.unshift(nuevoComentario);
+      localStorage.setItem("foroComentarios", JSON.stringify(comentarios));
+
+      comentarioTexto.value = "";
+      mostrarComentarios();
+    });
+  </script>
 </body>
 </html>

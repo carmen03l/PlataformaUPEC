@@ -1,140 +1,130 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
 body {
-  display: flex;
-  background: #f5f8ff;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f5f5f5;
 }
 
-/* 🔹 Menú lateral */
 .sidebar {
+  width: 220px;
+  background: #0d47a1;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  width: 230px;
-  height: 100%;
-  background-color: #1e3a8a;
-  color: white;
-  transition: transform 0.3s ease;
+  padding-top: 60px;
+  transition: width 0.3s;
+}
+
+.sidebar.collapsed {
+  width: 60px;
 }
 
 .sidebar ul {
   list-style: none;
-  padding: 80px 0;
-}
-
-.sidebar ul li {
-  padding: 15px 20px;
+  padding: 0;
 }
 
 .sidebar ul li a {
+  color: #fff;
   text-decoration: none;
-  color: white;
+  padding: 15px;
   display: block;
-  font-size: 16px;
+  transition: background 0.3s;
 }
 
 .sidebar ul li a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  background: #1565c0;
 }
 
-/* 🔹 Botón del menú */
-.menu-toggle {
+.toggle-btn {
   position: absolute;
-  top: 20px;
-  right: -40px;
-  background: #1e3a8a;
-  color: white;
-  padding: 10px 12px;
-  border-radius: 0 5px 5px 0;
+  top: 15px;
+  left: 15px;
+  background: #1565c0;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-/* Ocultar menú */
-.sidebar.hide {
-  transform: translateX(-200px);
-}
-
-/* 🔹 Encabezado */
 header {
-  width: 100%;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 15px 20px;
+  background: #2196f3;
+  color: #fff;
+  padding: 15px;
+  margin-left: 220px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
+  transition: margin-left 0.3s;
 }
 
-/* 🔹 Usuario arriba */
-.user-menu {
-  position: relative;
+.sidebar.collapsed + header {
+  margin-left: 60px;
+}
+
+.user-info {
   display: flex;
   align-items: center;
-  cursor: pointer;
+  gap: 10px;
 }
 
 .user-circle {
+  background: #fff;
+  color: #2196f3;
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: #1e3a8a;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
 }
 
-.arrow {
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-/* 🔹 Menú desplegable usuario */
 .dropdown {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  display: none;
-  flex-direction: column;
-  min-width: 180px;
+  position: relative;
+  display: inline-block;
 }
 
-.dropdown a {
+.dropbtn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  color: #333;
+  right: 0;
+  min-width: 150px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
   text-decoration: none;
   color: #333;
-  padding: 10px 15px;
-  border-bottom: 1px solid #eee;
 }
 
-.dropdown a:hover {
-  background: #e3f2fd;
+.dropdown-content a:hover {
+  background: #eee;
 }
 
-.dropdown.show {
-  display: flex;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-/* 🔹 Contenido principal */
 main {
-  margin-left: 250px;
-  margin-top: 80px;
+  margin-left: 220px;
   padding: 20px;
+  transition: margin-left 0.3s;
 }
 
-main h1 {
-  color: #1e3a8a;
-  margin-bottom: 10px;
+.sidebar.collapsed ~ main {
+  margin-left: 60px;
 }

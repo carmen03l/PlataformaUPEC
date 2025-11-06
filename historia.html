@@ -8,13 +8,15 @@
     body {
       font-family: "Poppins", sans-serif;
       margin: 0;
-      background: #f9f9f9;
-      padding: 20px;
+      background: #f4f6f8;
+      color: #333;
+      padding: 0;
     }
 
     h1 {
       text-align: center;
       color: #1e88e5;
+      margin-top: 40px;
     }
 
     .contenido {
@@ -22,67 +24,115 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      margin-top: 30px;
+      margin: 40px 5%;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 20px;
     }
 
     .texto {
       flex: 1;
       padding: 20px;
       text-align: justify;
+      min-width: 300px;
     }
 
-    .imagen {
+    .portada {
       flex: 1;
       text-align: center;
+      min-width: 300px;
+    }
+
+    .portada img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .galeria {
-      margin-top: 40px;
+      margin: 50px auto;
       text-align: center;
       position: relative;
-      max-width: 800px;
-      margin: 40px auto;
+      max-width: 850px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
 
     .galeria img {
       width: 100%;
-      height: 400px;
+      height: 450px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 15px;
+      transition: opacity 0.5s ease-in-out;
     }
 
     button {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: #1e88e5;
+      background: rgba(30,136,229,0.9);
       border: none;
       color: white;
-      font-size: 20px;
+      font-size: 24px;
       padding: 10px 15px;
       border-radius: 50%;
       cursor: pointer;
+      transition: background 0.3s;
     }
 
-    #prev {
-      left: -40px;
+    button:hover {
+      background: #1565c0;
     }
 
-    #next {
-      right: -40px;
+    #prev { left: 15px; }
+    #next { right: 15px; }
+
+    .historia-extendida {
+      max-width: 1100px;
+      margin: 60px auto;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .historia-texto {
+      flex: 2;
+      text-align: justify;
+    }
+
+    .historia-imagen {
+      flex: 1;
+      text-align: center;
+    }
+
+    .historia-imagen img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-top: 20px;
     }
 
     .volver {
-      margin-top: 30px;
       text-align: center;
+      margin: 40px 0;
     }
 
     .volver a {
       text-decoration: none;
       background: #1e88e5;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
     }
 
     .volver a:hover {
@@ -108,15 +158,45 @@
         más destacadas del norte ecuatoriano.
       </p>
     </div>
-    <div class="imagen">
-      <img src="https://www.upec.edu.ec/wp-content/uploads/2022/06/UPEC-portada-1-scaled.jpg" width="400" alt="UPEC Campus">
+    <div class="portada">
+      <img src="img/perfil/portada.jpg" alt="UPEC Campus">
     </div>
   </div>
 
   <div class="galeria">
     <button id="prev">❮</button>
-    <img id="slide" src="https://www.upec.edu.ec/wp-content/uploads/2022/06/UPEC-portada-2-scaled.jpg" alt="Galería UPEC">
+    <img id="slide" src="img/perfil/ec.jpg" alt="Galería UPEC">
     <button id="next">❯</button>
+  </div>
+
+  <div class="historia-extendida">
+    <div class="historia-texto">
+      <h2>Una Trayectoria de Crecimiento y Compromiso</h2>
+      <p>
+        Desde su creación, la UPEC ha mantenido un fuerte compromiso con el desarrollo regional,
+        promoviendo proyectos de innovación tecnológica, programas de vinculación con la sociedad
+        y alianzas estratégicas con instituciones nacionales e internacionales. 
+      </p>
+      <p>
+        En su camino hacia la excelencia, la universidad ha fortalecido sus carreras en agropecuaria,
+        turismo, administración, educación y computación, garantizando una formación integral 
+        basada en valores, investigación y sostenibilidad.
+      </p>
+      <p>
+        Hoy, la UPEC no solo representa un espacio académico, sino también un símbolo de identidad
+        para la provincia del Carchi, contribuyendo al bienestar y progreso de la comunidad a través 
+        de la educación superior de calidad.
+      </p>
+      <p>
+        Con el paso de los años, la universidad ha modernizado su infraestructura, implementado nuevas
+        tecnologías y generado un ambiente educativo que promueve la creatividad, la investigación y el
+        pensamiento crítico de sus estudiantes.
+      </p>
+    </div>
+    <div class="historia-imagen">
+      <img src="img/perfil/rect.jpg" alt="Edificio UPEC">
+      <img src="img/perfil/ever.jpg" alt="Estudiantes UPEC">
+    </div>
   </div>
 
   <div class="volver">
@@ -124,24 +204,43 @@
   </div>
 
   <script>
+    // Lista de imágenes para el carrusel
     const imagenes = [
-      "https://www.upec.edu.ec/wp-content/uploads/2022/06/UPEC-portada-1-scaled.jpg",
-      "https://www.upec.edu.ec/wp-content/uploads/2022/06/UPEC-portada-2-scaled.jpg",
-      "https://www.upec.edu.ec/wp-content/uploads/2022/06/UPEC-portada-3-scaled.jpg"
+      "img/perfil/eces.jpg",
+      "img/perfil/eve.jpg",
+      "img/perfil/ever.jpg",
+      "img/perfil/imagesclas.jpg",
+      "img/perfil/rect.jpg",
+      "img/perfil/sd.jpg"
     ];
 
     let index = 0;
     const slide = document.getElementById("slide");
 
+    // Botón siguiente
     document.getElementById("next").addEventListener("click", () => {
       index = (index + 1) % imagenes.length;
-      slide.src = imagenes[index];
+      slide.style.opacity = 0;
+      setTimeout(() => {
+        slide.src = imagenes[index];
+        slide.style.opacity = 1;
+      }, 300);
     });
 
+    // Botón anterior
     document.getElementById("prev").addEventListener("click", () => {
       index = (index - 1 + imagenes.length) % imagenes.length;
-      slide.src = imagenes[index];
+      slide.style.opacity = 0;
+      setTimeout(() => {
+        slide.src = imagenes[index];
+        slide.style.opacity = 1;
+      }, 300);
     });
+
+    // Deslizamiento automático cada 5 segundos
+    setInterval(() => {
+      document.getElementById("next").click();
+    }, 5000);
   </script>
 </body>
 </html>

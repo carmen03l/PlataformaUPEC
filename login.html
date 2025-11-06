@@ -8,113 +8,157 @@
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      display: flex;
+      background: linear-gradient(135deg, #1565c0, #42a5f5);
       height: 100vh;
-      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .container {
       display: flex;
-      width: 100%;
-    }
-
-    .left {
-      flex: 1;
-      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
-      position: relative;
-    }
-
-    .left::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-    }
-
-    .left-text {
-      position: absolute;
-      bottom: 30px;
-      left: 30px;
-      color: #fff;
-    }
-
-    .right {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .login-box {
+      width: 850px;
       background: #fff;
       border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    /* --- PANEL IZQUIERDO (Login) --- */
+    .login-section {
+      flex: 1;
       padding: 40px;
-      width: 350px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h2 {
+      color: #1e88e5;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
     }
 
     input {
-      width: 100%;
       padding: 12px;
       margin: 10px 0;
-      border-radius: 8px;
       border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
     }
 
     button {
-      width: 100%;
-      padding: 12px;
-      background: #2196f3;
-      color: #fff;
+      background: #1e88e5;
+      color: white;
       border: none;
+      padding: 12px;
       border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
-      font-weight: bold;
+      margin-top: 10px;
     }
 
     button:hover {
-      background: #1976d2;
+      background: #1565c0;
+    }
+
+    .register-link {
+      margin-top: 10px;
+      color: #1e88e5;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* --- PANEL DERECHO (Registro) --- */
+    .register-section {
+      flex: 1;
+      background: #1e88e5;
+      color: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .register-section h2 {
+      margin-bottom: 15px;
+    }
+
+    .register-section p {
+      text-align: center;
+      max-width: 280px;
+      margin-bottom: 20px;
+    }
+
+    .register-section button {
+      background: white;
+      color: #1e88e5;
+      font-weight: bold;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .register-section button:hover {
+      background: #e3f2fd;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        width: 90%;
+      }
+
+      .register-section {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="left">
-      <div class="left-text">
-        <h1>Plataforma UPEC</h1>
-        <p>Conecta, aprende y comparte con la comunidad académica.</p>
-      </div>
+    <div class="login-section">
+      <h2>Iniciar Sesión</h2>
+      <form id="loginForm">
+        <input type="text" id="usuario" placeholder="Usuario o correo" required />
+        <input type="password" id="clave" placeholder="Contraseña" required />
+        <button type="submit">Entrar</button>
+      </form>
+      <div class="register-link" onclick="mostrarRegistro()">¿No tienes cuenta? Crear una cuenta</div>
     </div>
-    <div class="right">
-      <div class="login-box">
-        <h2>Iniciar Sesión</h2>
-        <form id="loginForm">
-          <input type="text" id="usuario" placeholder="Usuario o correo" required />
-          <input type="password" id="clave" placeholder="Contraseña" required />
-          <button type="submit" id="loginBtn">Entrar</button>
-        </form>
-      </div>
+
+    <div class="register-section" id="registerSection">
+      <h2>¿Nuevo aquí?</h2>
+      <p>Regístrate para explorar la historia de la UPEC, participar en foros y calificar aportes.</p>
+      <button onclick="irRegistro()">Registrarse</button>
     </div>
   </div>
 
   <script>
+    // Guardar usuario y redirigir
     document.getElementById("loginForm").addEventListener("submit", (e) => {
       e.preventDefault();
-
-      const usuario = document.getElementById("usuario").value.trim();
-      const clave = document.getElementById("clave").value.trim();
-
-      if (usuario && clave) {
-        localStorage.setItem("usuarioUPEC", usuario);
-        alert("✅ Sesión iniciada correctamente");
-        window.location.href = "inicio.html";
-      } else {
-        alert("⚠️ Ingresa tu usuario y contraseña");
-      }
+      const usuario = document.getElementById("usuario").value || "Invitado";
+      localStorage.setItem("usuarioUPEC", usuario);
+      window.location.href = "inicio.html";
     });
+
+    function irRegistro() {
+      alert("Función de registro próximamente disponible.");
+    }
+
+    function mostrarRegistro() {
+      alert("Redirigiendo al registro...");
+    }
   </script>
 </body>
 </html>

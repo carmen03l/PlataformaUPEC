@@ -1,37 +1,149 @@
 body {
-  background: #eef2f3;
-  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f4f6f9;
+  color: #333;
 }
 
-.foro-container {
-  width: 80%;
-  margin: 50px auto;
-  background: white;
-  padding: 20px;
+header {
+  background: linear-gradient(90deg, #1565c0, #1e88e5);
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+#volverBtn {
+  background: #fff;
+  color: #1565c0;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#volverBtn:hover {
+  background: #bbdefb;
+}
+
+main {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #1565c0;
+  margin-bottom: 15px;
+}
+
+.publicar textarea {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #ccc;
   border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  resize: none;
+  transition: 0.3s;
+}
+
+.publicar textarea:focus {
+  outline: none;
+  border-color: #1565c0;
+  box-shadow: 0 0 6px rgba(21,101,192,0.3);
+}
+
+.publicar button {
+  margin-top: 10px;
+  background: #1565c0;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.publicar button:hover {
+  background: #0d47a1;
+}
+
+.comentarios-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .comentario {
-  background: #f5f5f5;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
+  background: #f9fbff;
+  border-left: 6px solid #1565c0;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
 }
 
-#nuevoComentario textarea {
-  width: 100%;
-  height: 80px;
-  margin-top: 20px;
-  border-radius: 5px;
-  padding: 10px;
+.comentario:hover {
+  transform: scale(1.01);
 }
 
-#nuevoComentario button {
-  background: #003973;
-  color: white;
+.info-usuario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.info-usuario strong {
+  color: #1565c0;
+}
+
+.comentario p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.acciones button {
   border: none;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
+  background: #e3f2fd;
+  color: #1565c0;
+  border-radius: 6px;
   cursor: pointer;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.acciones button:hover {
+  background: #bbdefb;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-size: 0.9rem;
 }
