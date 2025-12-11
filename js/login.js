@@ -2,30 +2,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); // Evita recargar la página
+    e.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const usuario = document.getElementById("usuario").value.trim();
+    const clave = document.getElementById("clave").value.trim();
 
-    // Verificar que los campos no estén vacíos
-    if (email === "" || password === "") {
-      alert("⚠️ Por favor, completa todos los campos.");
+    if (usuario === "" || clave === "") {
+      alert("⚠️ Por favor completa todos los campos.");
       return;
     }
 
-    // Buscar el usuario en el localStorage
+    // Recuperar usuarios guardados
     const usuarios = JSON.parse(localStorage.getItem("usuariosUPEC")) || [];
+
+    // Buscar si existe
     const usuarioEncontrado = usuarios.find(
-      (u) => u.email === email && u.password === password
+      (u) => (u.usuario === usuario || u.email === usuario) && u.password === clave
     );
 
     if (usuarioEncontrado) {
-      // Guardar usuario activo
-      localStorage.setItem("usuarioActivo", usuarioEncontrado.nombre);
+      // Guardar sesión correctamente
+      localStorage.setItem("usuarioActivo", usuarioEncontrado.usuario);
+
       alert("✅ Sesión iniciada correctamente.");
       window.location.href = "inicio.html";
     } else {
-      alert("❌ Correo o contraseña incorrectos.");
+      alert("❌ Usuario o contraseña incorrectos.");
     }
   });
 });

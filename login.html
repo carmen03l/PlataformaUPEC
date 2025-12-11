@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iniciar Sesión | Plataforma UPEC</title>
+
   <style>
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #1565c0, #42a5f5);
+      background: linear-gradient(135deg, #0b3d2e, #0e5c44, #0b3d2e);
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -20,11 +21,11 @@
       width: 850px;
       background: #fff;
       border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
       overflow: hidden;
     }
 
-    /* --- PANEL IZQUIERDO (Login) --- */
+    /* PANEL IZQUIERDO */
     .login-section {
       flex: 1;
       padding: 40px;
@@ -35,26 +36,34 @@
     }
 
     h2 {
-      color: #1e88e5;
+      color: #0e5c44;
       margin-bottom: 20px;
+      font-weight: 700;
     }
 
     form {
+      width: 80%;
       display: flex;
       flex-direction: column;
-      width: 80%;
     }
 
     input {
       padding: 12px;
       margin: 10px 0;
-      border: 1px solid #ccc;
+      border: 1px solid #b7ccb9;
       border-radius: 8px;
       font-size: 14px;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #0e5c44;
+      box-shadow: 0 0 5px rgba(14, 92, 68, 0.4);
+      outline: none;
     }
 
     button {
-      background: #1e88e5;
+      background: #0e5c44;
       color: white;
       border: none;
       padding: 12px;
@@ -62,56 +71,82 @@
       font-size: 16px;
       cursor: pointer;
       margin-top: 10px;
+      transition: 0.3s;
     }
 
     button:hover {
-      background: #1565c0;
+      background: #0b3d2e;
+      transform: scale(1.03);
     }
 
     .register-link {
       margin-top: 10px;
-      color: #1e88e5;
+      color: #0e5c44;
       cursor: pointer;
       text-decoration: underline;
     }
 
-    /* --- PANEL DERECHO (Registro) --- */
+    /* PANEL DERECHO (CON IMAGEN) */
     .register-section {
       flex: 1;
-      background: #1e88e5;
+      background: url('img/registro/registro.jpg') no-repeat center center / cover;
       color: white;
       padding: 40px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+    }
+
+    /* capa oscura para hacer visible el texto */
+    .register-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .register-section * {
+      position: relative;
+      z-index: 2;
     }
 
     .register-section h2 {
       margin-bottom: 15px;
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .register-section p {
       text-align: center;
-      max-width: 280px;
+      max-width: 260px;
       margin-bottom: 20px;
+      font-size: 15px;
+      line-height: 1.4;
     }
 
     .register-section button {
       background: white;
-      color: #1e88e5;
+      color: #0e5c44;
       font-weight: bold;
       border: none;
       padding: 12px 30px;
       border-radius: 8px;
       cursor: pointer;
+      transition: 0.3s;
     }
 
     .register-section button:hover {
-      background: #e3f2fd;
+      background: #d8efe4;
     }
 
-    /* --- RESPONSIVE --- */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -124,41 +159,54 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
+
+    <!-- PANEL LOGIN -->
     <div class="login-section">
       <h2>Iniciar Sesión</h2>
+
       <form id="loginForm">
         <input type="text" id="usuario" placeholder="Usuario o correo" required />
         <input type="password" id="clave" placeholder="Contraseña" required />
         <button type="submit">Entrar</button>
       </form>
-      <div class="register-link" onclick="mostrarRegistro()">¿No tienes cuenta? Crear una cuenta</div>
+
+      <div class="register-link" onclick="mostrarRegistro()">
+        ¿No tienes cuenta? Crear una cuenta
+      </div>
     </div>
 
+    <!-- PANEL REGISTRO -->
     <div class="register-section" id="registerSection">
-      <h2>¿Nuevo aquí?</h2>
-      <p>Regístrate para explorar la historia de la UPEC, participar en foros y calificar aportes.</p>
+      <h2>Únete a la plataforma</h2>
+      <p>
+        Regístrate para explorar la historia de la UPEC, participar en foros,
+        aprender con otros estudiantes y calificar aportes.
+      </p>
       <button onclick="irRegistro()">Registrarse</button>
     </div>
+
   </div>
 
-  <script>
-    // Guardar usuario y redirigir
-    document.getElementById("loginForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const usuario = document.getElementById("usuario").value || "Invitado";
-      localStorage.setItem("usuarioUPEC", usuario);
-      window.location.href = "inicio.html";
-    });
+<script>
+  // GUARDAR USUARIO Y REDIRIGIR
+  document.getElementById("loginForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const usuario = document.getElementById("usuario").value || "Invitado";
+    localStorage.setItem("usuarioUPEC", usuario);
+    window.location.href = "inicio.html";
+  });
 
-    function irRegistro() {
-      alert("Función de registro próximamente disponible.");
-    }
+  function irRegistro() {
+    alert("Función de registro próximamente disponible.");
+  }
 
-    function mostrarRegistro() {
-      alert("Redirigiendo al registro...");
-    }
-  </script>
+  function mostrarRegistro() {
+    alert("Redirigiendo al registro...");
+  }
+</script>
+
 </body>
 </html>

@@ -4,291 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Foro Académico | UPEC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background-color: #f4f6fa;
-      color: #333;
-    }
 
-    header {
-      background: #1565c0;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    header h1 {
-      font-size: 1.5rem;
-    }
-
-    #volverBtn {
-      background: #fff;
-      color: #1565c0;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    #volverBtn:hover {
-      background: #bbdefb;
-    }
-
-    main {
-      width: 85%;
-      max-width: 1000px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 25px 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-    }
-
-    .nuevo-comentario {
-      margin-bottom: 40px;
-      border-bottom: 2px solid #e0e0e0;
-      padding-bottom: 20px;
-    }
-
-    .nuevo-comentario h2 {
-      color: #1565c0;
-    }
-
-    .nuevo-comentario textarea {
-      width: 100%;
-      height: 120px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 10px;
-      font-size: 15px;
-      resize: none;
-      margin-bottom: 10px;
-    }
-
-    .nuevo-comentario input[type="file"] {
-      margin: 8px 0;
-    }
-
-    .nuevo-comentario button {
-      background: #1565c0;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .nuevo-comentario button:hover {
-      background: #0d47a1;
-    }
-
-    .comentario {
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .comentario .cabecera {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .comentario .usuario {
-      font-weight: 600;
-      color: #1565c0;
-    }
-
-    .comentario .rol {
-      background: #e3f2fd;
-      color: #1565c0;
-      font-size: 12px;
-      padding: 3px 8px;
-      border-radius: 6px;
-      margin-left: 8px;
-    }
-
-    .comentario .fecha {
-      font-size: 12px;
-      color: #777;
-    }
-
-    .comentario img {
-      max-width: 200px;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .acciones {
-      display: flex;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .acciones button {
-      border: none;
-      background: #e3f2fd;
-      color: #1565c0;
-      border-radius: 6px;
-      cursor: pointer;
-      padding: 5px 12px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-
-    .acciones button:hover {
-      background: #bbdefb;
-    }
-
-    .foro-lista h2 {
-      color: #1565c0;
-      margin-top: 0;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/foro.css">
 </head>
+
 <body>
+
   <header>
-    <h1>💻 Foro Académico - UPEC</h1>
+    <h1>🌱 Foro Académico - UPEC</h1>
     <button id="volverBtn">⬅ Volver al inicio</button>
   </header>
 
   <main>
     <div class="nuevo-comentario">
-      <h2>Publicar nuevo aporte o pregunta</h2>
-      <textarea id="comentarioTexto" placeholder="Comparte tu conocimiento, duda o experiencia académica..."></textarea>
+      <h2>Publica un aporte o una pregunta</h2>
+      <textarea id="comentarioTexto" placeholder="Comparte tu duda, experiencia o aporte académico..."></textarea>
+
       <input type="file" id="imagenComentario" accept="image/*">
+
       <button id="publicarBtn">📢 Publicar</button>
     </div>
 
     <div class="foro-lista">
       <h2>🗨 Comentarios Recientes</h2>
+
+      <!-- AQUÍ SE RENDERIZAN AUTOMÁTICAMENTE -->
       <div id="comentariosContainer"></div>
+
     </div>
+
   </main>
 
-  <script>
-    const usuarioActivo = localStorage.getItem("usuarioUPEC") || "Usuario";
-    const rolActivo = localStorage.getItem("rolUPEC") || "Estudiante";
+  <script src="../js/foro.js"></script>
 
-    const comentariosContainer = document.getElementById("comentariosContainer");
-    const publicarBtn = document.getElementById("publicarBtn");
-    const comentarioTexto = document.getElementById("comentarioTexto");
-    const imagenComentario = document.getElementById("imagenComentario");
-    const volverBtn = document.getElementById("volverBtn");
-
-    volverBtn.addEventListener("click", () => {
-      window.location.href = "inicio.html";
-    });
-
-    let comentarios = JSON.parse(localStorage.getItem("foroComentarios")) || [];
-
-    function mostrarComentarios() {
-      comentariosContainer.innerHTML = "";
-      if (comentarios.length === 0) {
-        comentariosContainer.innerHTML = "<p>No hay comentarios aún. ¡Sé el primero en participar!</p>";
-        return;
-      }
-
-      comentarios.forEach((comentario, i) => {
-        const div = document.createElement("div");
-        div.classList.add("comentario");
-
-        div.innerHTML = `
-          <div class="cabecera">
-            <div>
-              <span class="usuario">${comentario.usuario}</span>
-              <span class="rol">${comentario.rol}</span>
-            </div>
-            <span class="fecha">${comentario.fecha}</span>
-          </div>
-          <p>${comentario.texto}</p>
-          ${comentario.imagen ? `<img src="${comentario.imagen}" alt="Imagen del comentario">` : ""}
-          <div class="acciones">
-            <button class="likeBtn" data-index="${i}">👍 ${comentario.likes}</button>
-            <button class="dislikeBtn" data-index="${i}">👎 ${comentario.dislikes}</button>
-            ${comentario.usuario === usuarioActivo ? `<button class="deleteBtn" data-index="${i}">🗑 Eliminar</button>` : ""}
-          </div>
-        `;
-        comentariosContainer.appendChild(div);
-      });
-
-      document.querySelectorAll(".likeBtn").forEach(btn => {
-        btn.addEventListener("click", e => {
-          const i = e.target.dataset.index;
-          comentarios[i].likes++;
-          guardarComentarios();
-        });
-      });
-
-      document.querySelectorAll(".dislikeBtn").forEach(btn => {
-        btn.addEventListener("click", e => {
-          const i = e.target.dataset.index;
-          comentarios[i].dislikes++;
-          guardarComentarios();
-        });
-      });
-
-      document.querySelectorAll(".deleteBtn").forEach(btn => {
-        btn.addEventListener("click", e => {
-          const i = e.target.dataset.index;
-          comentarios.splice(i, 1);
-          guardarComentarios();
-        });
-      });
-    }
-
-    function guardarComentarios() {
-      localStorage.setItem("foroComentarios", JSON.stringify(comentarios));
-      mostrarComentarios();
-    }
-
-    publicarBtn.addEventListener("click", () => {
-      const texto = comentarioTexto.value.trim();
-      if (texto === "") {
-        alert("Por favor escribe algo antes de publicar.");
-        return;
-      }
-
-      const nuevoComentario = {
-        usuario: usuarioActivo,
-        rol: rolActivo,
-        texto,
-        fecha: new Date().toLocaleString(),
-        likes: 0,
-        dislikes: 0,
-        imagen: ""
-      };
-
-      if (imagenComentario.files.length > 0) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          nuevoComentario.imagen = e.target.result;
-          comentarios.unshift(nuevoComentario);
-          guardarComentarios();
-        };
-        reader.readAsDataURL(imagenComentario.files[0]);
-      } else {
-        comentarios.unshift(nuevoComentario);
-        guardarComentarios();
-      }
-
-      comentarioTexto.value = "";
-      imagenComentario.value = "";
-    });
-
-    mostrarComentarios();
-  </script>
 </body>
 </html>

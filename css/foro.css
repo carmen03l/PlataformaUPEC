@@ -1,30 +1,37 @@
+/* ================================
+   ESTILOS GENERALES
+=================================*/
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: #f4f6f9;
-  color: #333;
+  background: #e8f5e9; /* Verde suave */
+  color: #2e4a2f;
 }
 
+/* ================================
+   HEADER
+=================================*/
 header {
-  background: linear-gradient(90deg, #1565c0, #1e88e5);
+  background: linear-gradient(90deg, #1b5e20, #2e7d32);
   color: #fff;
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
 }
 
 header h1 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin: 0;
+  font-weight: 600;
 }
 
 #volverBtn {
   background: #fff;
-  color: #1565c0;
+  color: #1b5e20;
   border: none;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
@@ -32,69 +39,72 @@ header h1 {
 }
 
 #volverBtn:hover {
-  background: #bbdefb;
+  background: #c8e6c9;
 }
 
+/* ================================
+   CONTENEDOR PRINCIPAL
+=================================*/
 main {
   width: 90%;
   max-width: 900px;
   margin: 40px auto;
-  background: #fff;
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: 15px;
   padding: 30px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.1);
+  box-shadow: 0 0 25px rgba(0,0,0,0.15);
 }
 
-h2 {
-  color: #1565c0;
+/* ================================
+   PUBLICAR NUEVO COMENTARIO
+=================================*/
+.nuevo-comentario h2 {
+  color: #1b5e20;
   margin-bottom: 15px;
 }
 
-.publicar textarea {
+.nuevo-comentario textarea {
   width: 100%;
-  height: 100px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 15px;
+  height: 130px;
+  border: 1px solid #81c784;
+  border-radius: 12px;
+  padding: 12px;
   resize: none;
   transition: 0.3s;
 }
 
-.publicar textarea:focus {
+.nuevo-comentario textarea:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 10px rgba(46,125,50,0.3);
   outline: none;
-  border-color: #1565c0;
-  box-shadow: 0 0 6px rgba(21,101,192,0.3);
 }
 
-.publicar button {
+.nuevo-comentario button {
   margin-top: 10px;
-  background: #1565c0;
+  background: #2e7d32;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 25px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
   transition: 0.3s;
 }
 
-.publicar button:hover {
-  background: #0d47a1;
+.nuevo-comentario button:hover {
+  background: #1b5e20;
 }
 
-.comentarios-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
+/* ================================
+   TARJETAS DE COMENTARIOS
+=================================*/
 .comentario {
-  background: #f9fbff;
-  border-left: 6px solid #1565c0;
+  background: #f1f8e9;
+  border-left: 6px solid #2e7d32;
   padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
 }
 
@@ -102,48 +112,78 @@ h2 {
   transform: scale(1.01);
 }
 
-.info-usuario {
+.cabecera {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
-  color: #555;
 }
 
-.info-usuario strong {
-  color: #1565c0;
+.usuario {
+  font-weight: 600;
+  color: #1b5e20;
 }
 
-.comentario p {
-  margin: 8px 0;
-  font-size: 1rem;
-  color: #333;
+.rol {
+  background: #c8e6c9;
+  color: #1b5e20;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 12px;
 }
 
+/* imagen adjunta */
+.comentario img {
+  max-width: 220px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* ACCIONES */
 .acciones {
   display: flex;
   gap: 10px;
+  margin-top: 12px;
 }
 
 .acciones button {
   border: none;
-  background: #e3f2fd;
-  color: #1565c0;
-  border-radius: 6px;
+  background: #a5d6a7;
+  color: #1b5e20;
+  padding: 6px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  padding: 6px 12px;
-  font-size: 14px;
+  transition: 0.3s;
   font-weight: bold;
-  transition: background 0.3s;
 }
 
 .acciones button:hover {
-  background: #bbdefb;
+  background: #81c784;
+}
+/* RESPUESTAS */
+.respuesta {
+  margin-left: 25px;
+  background: #e8f5e9;
+  border-left: 4px solid #1b5e20;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
-  font-size: 0.9rem;
+.reply-box textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #81c784;
+  resize: none;
+}
+
+.sendReplyBtn {
+  background: #1b5e20;
+  color: #fff;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
