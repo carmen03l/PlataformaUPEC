@@ -1,130 +1,143 @@
+/* ==== ESTILOS GENERALES ==== */
 body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: #f5f5f5;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #e9f0ed;
+    display: flex;
 }
 
+/* ==== SIDEBAR ==== */
 .sidebar {
-  width: 220px;
-  background: #0d47a1;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding-top: 60px;
-  transition: width 0.3s;
+    width: 230px;
+    height: 100vh;
+    background: #0B2B26;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
-.sidebar.collapsed {
-  width: 60px;
+.menu-item {
+    padding: 14px 20px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+.menu-item:hover {
+    background: #163832;
 }
 
-.sidebar ul li a {
-  color: #fff;
-  text-decoration: none;
-  padding: 15px;
-  display: block;
-  transition: background 0.3s;
+/* ==== HEADER ==== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 230px;
+    width: calc(100% - 230px);
+    height: 60px;
+    background: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.sidebar ul li a:hover {
-  background: #1565c0;
-}
-
-.toggle-btn {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: #1565c0;
-  color: #fff;
-  border: none;
-  padding: 8px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-header {
-  background: #2196f3;
-  color: #fff;
-  padding: 15px;
-  margin-left: 220px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  transition: margin-left 0.3s;
-}
-
-.sidebar.collapsed + header {
-  margin-left: 60px;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.user-area {
+    position: relative;
 }
 
 .user-circle {
-  background: #fff;
-  color: #2196f3;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: #8EB69B;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
 }
 
+/* ==== DROPDOWN ==== */
 .dropdown {
-  position: relative;
-  display: inline-block;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 55px;
+    background: white;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
-.dropbtn {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
+.dropdown a {
+    padding: 10px 20px;
+    display: block;
+    color: #333;
+    text-decoration: none;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #fff;
-  color: #333;
-  right: 0;
-  min-width: 150px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+.dropdown a:hover {
+    background: #f1f1f1;
 }
 
-.dropdown-content a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
+/* ==== CONTENIDO ==== */
+.content {
+    margin-left: 230px;
+    margin-top: 80px;
+    text-align: center;
+    width: calc(100% - 230px);
 }
 
-.dropdown-content a:hover {
-  background: #eee;
+.titulo {
+    font-size: 32px;
+    color: #163832;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.descripcion {
+    color: #234;
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
 }
 
-main {
-  margin-left: 220px;
-  padding: 20px;
-  transition: margin-left 0.3s;
+/* ==== CARRUSEL ==== */
+.slider-container {
+    width: 60%;
+    height: 380px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.sidebar.collapsed ~ main {
-  margin-left: 60px;
+.slider-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.volver-inicio {
+    width: 90%;
+    margin: 15px auto;
+    text-align: right;
+}
+
+.volver-inicio button {
+    background: #0B2B26;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.volver-inicio button:hover {
+    background: #163832;
 }

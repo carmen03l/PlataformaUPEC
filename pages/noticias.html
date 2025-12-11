@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Diario | Noticias de Computación UPEC</title>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: #0B2B26;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            width: 90%;
+            margin: 25px auto;
+        }
+
+        /* NOTICIA PRINCIPAL */
+        .principal {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .principal img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .principal h2 {
+            margin-top: 15px;
+            color: #0B2B26;
+        }
+
+        /* COLUMNA DERECHA */
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h3 {
+            color: #0B2B26;
+            border-bottom: 2px solid #0B2B26;
+            padding-bottom: 8px;
+        }
+
+        .mini-noticia {
+            margin-top: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .mini-noticia:hover {
+            color: #1565c0;
+            cursor: pointer;
+        }
+
+        /* SECCIÓN DE NOTICIAS SECUNDARIAS */
+        .noticias-secundarias {
+            width: 90%;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .sec-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .sec-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .sec-card h4 {
+            margin-top: 10px;
+            color: #0B2B26;
+        }
+
+        .sec-card:hover {
+            transform: scale(1.02);
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: #0B2B26;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>📰 CÓDIGO DIARIO – Noticias relevantes a la Carrera de Computación de la UPEC</header>
+
+<div class="volver-inicio">
+    <button onclick="location.href='../inicio.html'">⬅ Volver al Inicio</button>
+</div>
+
+<div class="container">
+
+    <!-- NOTICIA PRINCIPAL -->
+    <div class="principal">
+        <img src="../img/perfil/rect.jpg">
+        <h2>🚀 UPEC inaugura nuevo laboratorio de desarrollo y ciberseguridad</h2>
+        <p>
+            La carrera de Computación celebró la apertura de un moderno laboratorio equipado con máquinas
+            de alto rendimiento, estaciones Linux, entornos de virtualización y herramientas de hacking ético.
+            – Un gran impulso para la formación tecnológica de la región norte.
+        </p>
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="sidebar">
+        <h3>Última Hora</h3>
+
+        <div class="mini-noticia">💡 Estudiantes de Computación crean app para gestionar tareas académicas.</div>
+        <div class="mini-noticia">🤖 Proyecto de IA gana reconocimiento en feria tecnológica.</div>
+        <div class="mini-noticia">🛡️ UPEC organiza taller de ciberseguridad con expertos internacionales.</div>
+        <div class="mini-noticia">📘 Nueva malla curricular implementa materias de programación avanzada.</div>
+
+        <h3 style="margin-top:20px;">Especiales</h3>
+        <img src="../img/perfil/sd.jpg" style="width:100%; border-radius:10px;">
+    </div>
+</div>
+
+<!-- NOTICIAS SECUNDARIAS -->
+<div class="noticias-secundarias">
+
+    <div class="sec-card">
+        <img src="../img/perfil/ever.jpg">
+        <h4>👨‍💻 Hackatón UPEC reúne a más de 100 programadores</h4>
+        <p>Equipos desarrollaron soluciones para problemas reales en menos de 24 horas.</p>
+    </div>
+
+    <div class="sec-card">
+        <img src="../img/perfil/imagesclas.jpg">
+        <h4>🎓 Estudiante UPEC publica investigación sobre IA en revistas internacionales</h4>
+        <p>Un logro histórico para la carrera de Computación.</p>
+    </div>
+
+    <div class="sec-card">
+        <img src="../img/perfil/eve.jpg">
+        <h4>🌐 Nuevo programa de vinculación: Talleres gratuitos para colegios</h4>
+        <p>La carrera impulsa vocaciones tempranas en tecnología.</p>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 – Código Diario | Plataforma UPEC – Todos los derechos reservados
+</footer>
+
+</body>
+</html>

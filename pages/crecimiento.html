@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crecimiento de la Carrera de Computación | UPEC</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/crecimiento.css">
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header class="header">
+        <h1>🌱 Evolución de la Carrera de Computación – UPEC</h1>
+        <button class="volver" onclick="location.href='../inicio.html'">⬅ Volver</button>
+    </header>
+
+    <!-- Introducción principal -->
+    <section class="intro anim">
+        <p>
+            Desde sus inicios como Ingeniería en Informática hasta convertirse en la actual carrera de Computación,
+            la UPEC ha construido un camino de crecimiento académico, tecnológico y científico que hoy forma a
+            profesionales capaces de innovar y transformar el entorno.
+        </p>
+    </section>
+
+    <!-- Banner principal -->
+    <section class="banner anim">
+        <img src="../img/perfil/rect.jpg" alt="Laboratorio UPEC">
+    </section>
+
+    <!-- Línea del tiempo -->
+    <section class="timeline">
+
+        <!-- 1 -->
+        <div class="item anim left">
+            <div class="content">
+                <h2>📌 2006–2009 – Nacimiento de Informática</h2>
+                <p>
+                    Cuando la UPEC abrió sus puertas, una de las primeras carreras ofertadas fue Ingeniería en Informática.
+                    Sus bases fueron técnicas y orientadas al uso de tecnologías de la información.
+                </p>
+                <ul>
+                    <li>Programación estructurada</li>
+                    <li>Redes básicas</li>
+                    <li>Ofimática avanzada</li>
+                    <li>Sistemas operativos</li>
+                </ul>
+            </div>
+            <img src="../img/inicio/3.jpeg" alt="Inicios Informática">
+        </div>
+
+        <!-- 2 -->
+        <div class="item anim right">
+            <div class="content">
+                <h2>📌 2010–2014 – Transición Académica</h2>
+                <p>
+                    Se introducen nuevas asignaturas más complejas, inicia la investigación estudiantil y llegan
+                    docentes con posgrados especializados.
+                </p>
+                <ul>
+                    <li>Estructuras de datos</li>
+                    <li>POO</li>
+                    <li>Bases de datos</li>
+                    <li>Algoritmos</li>
+                </ul>
+            </div>
+            <img src="../img/inicio/7.jpeg" alt="Modernización académica">
+        </div>
+
+        <!-- 3 -->
+        <div class="item anim left">
+            <div class="content">
+                <h2>📌 2015–2018 – Cambio a Computación</h2>
+                <p>
+                    Con la reestructuración nacional de carreras, Informática evoluciona oficialmente a
+                    Ingeniería en Computación, con enfoque en ciencia computacional e ingeniería del software.
+                </p>
+                <ul>
+                    <li>Metodologías ágiles</li>
+                    <li>IA inicial</li>
+                    <li>Computación teórica</li>
+                    <li>Redes avanzadas</li>
+                </ul>
+            </div>
+            <img src="../img/perfil/eve.jpg" alt="Cambio a computación">
+        </div>
+
+        <!-- 4 -->
+        <div class="item anim right">
+            <div class="content">
+                <h2>📌 2019–2023 – Consolidación moderna</h2>
+                <p>
+                    La carrera se fortalece con nuevos laboratorios, proyectos reales y semilleros de investigación.
+                </p>
+                <ul>
+                    <li>Laboratorio CISCO</li>
+                    <li>Laboratorio de software</li>
+                    <li>Robótica y embebidos</li>
+                    <li>Proyectos IA</li>
+                </ul>
+            </div>
+            <img src="../img/perfil/sd.jpg" alt="Laboratorios modernos">
+        </div>
+
+        <!-- 5 -->
+        <div class="item anim left">
+            <div class="content">
+                <h2>📌 2024–2025 – Expansión y especialización</h2>
+                <p>
+                    La carrera hoy ofrece perfiles modernos con alta empleabilidad y competencias tecnológicas.
+                </p>
+                <ul>
+                    <li>Full Stack Developer</li>
+                    <li>Machine Learning & IA</li>
+                    <li>Ciberseguridad</li>
+                    <li>Cloud Computing</li>
+                </ul>
+            </div>
+            <img src="../img/inicio/1.jpeg" alt="Actualidad computación UPEC">
+        </div>
+
+    </section>
+
+    <!-- Conclusión final -->
+    <section class="final anim">
+        <h2>🧭 Conclusión general</h2>
+        <p>
+            La evolución de la carrera demuestra el compromiso de la UPEC con la excelencia académica y la innovación.
+            Hoy, Computación es una de las carreras más sólidas, modernas y con mayor proyección profesional en la región.
+        </p>
+    </section>
+
+    <!-- Animaciones en scroll -->
+    <script>
+        const animElements = document.querySelectorAll(".anim");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add("show");
+            });
+        });
+
+        animElements.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
